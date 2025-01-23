@@ -1,0 +1,23 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the app covers the full viewport height */
+  background-color: #121212; /* Same dark background as body */
+}
+
+.main-content {
+  flex: 1; /* Allow the main content to grow */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  padding: 20px;
+}
+
+body {
+  background-color: #121212; /* Dark background */
+  color: white; /* Default text color */
+  margin: 0; /* Remove default margins */
+  height: 100%; /* Ensure the body takes the full height */
+}
+
+html {
+  height: 100%; /* Ensure html takes full height */
+}

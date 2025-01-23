@@ -1,0 +1,125 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #282c34;
+    color: white;
+    height: 60px;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .create-button {
+    padding: 5px 15px;
+    background-color: #61dafb;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-button:hover {
+    background-color: #21a1f1;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .user-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #282c34;
+    color: white;
+    width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .dropdown-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .dropdown-username {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .dropdown-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdown-options li {
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .dropdown-options li:hover {
+    background-color: #3c4048;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 10px 0;
+  }
+  
+  .sign-in-button {
+    padding: 8px 20px;
+    font-size: 16px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .sign-in-button:hover {
+    background-color: white;
+    color: #282c34;
+  }
+  
