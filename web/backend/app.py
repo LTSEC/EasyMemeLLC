@@ -1,21 +1,22 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import psycopg2  # PostgreSQL driver
+import mysql.connector
 from config import DATABASE_CONFIG
 
 app = Flask(__name__)
 CORS(app)
 
+
 # Connect to the database
 def get_db_connection():
     try:
-        conn = psycopg2.connect(
+        conn = mysql.connector.connect(
             host=DATABASE_CONFIG["host"],
             port=DATABASE_CONFIG["port"],
             user=DATABASE_CONFIG["user"],
             password=DATABASE_CONFIG["password"],
-            dbname=DATABASE_CONFIG["dbname"],
-        )
+            database=DATABASE_CONFIG["dbname"],
+	)
         return conn
     except Exception as e:
         print(f"Error connecting to the database: {e}")
