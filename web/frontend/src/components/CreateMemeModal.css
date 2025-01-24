@@ -1,0 +1,109 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #121212;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-height: 90%; /* Restrict modal height */
+    overflow-y: auto; /* Add scrollbar when content overflows */
+    max-width: 90%;
+    text-align: center;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .meme-preview {
+    position: relative;
+    margin: 10px 0;
+    width: 100%;
+    max-height: 300px; /* Restrict the preview height */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .preview-image {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .meme-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Impact", sans-serif;
+    font-size: 24px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    pointer-events: none;
+    white-space: nowrap;
+    text-transform: uppercase; /* Ensure text is always uppercase */
+  }
+  
+  .meme-text.top {
+    top: 10px;
+  }
+  
+  .meme-text.bottom {
+    bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+  
+  input[type="text"], select, input[type="file"], input[type="range"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="range"] {
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    background: #61dafb;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .submit-button:hover {
+    background: #21a1f1;
+  }
+  

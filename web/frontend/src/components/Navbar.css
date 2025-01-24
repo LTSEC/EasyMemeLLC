@@ -123,3 +123,10 @@
     color: #282c34;
   }
   
+  .user-icon-image {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    border-radius: 50%; /* Makes the image circular, optional */
+    object-fit: cover; /* Ensures the image fits well within the bounds */
+  }
+  

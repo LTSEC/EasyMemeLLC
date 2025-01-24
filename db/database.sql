@@ -22,6 +22,7 @@ CREATE TABLE posts (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Post creation timestamp
     likes INT DEFAULT 0,                       -- Number of likes
     views INT DEFAULT 0,                       -- Number of views
+    image_url VARCHAR(255),                    -- URL of the uploaded image
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
@@ -35,7 +36,8 @@ CREATE TABLE subscriptions (
     UNIQUE (user_id, subscriber_id)            -- Prevent duplicate subscriptions
 );
 
--- Trigger to increment subscriber_count after a subscription is added
+DELIMITER //
+
 CREATE TRIGGER after_subscription_insert
 AFTER INSERT ON subscriptions
 FOR EACH ROW
@@ -44,8 +46,8 @@ BEGIN
     SET subscriber_count = subscriber_count + 1 
     WHERE id = NEW.user_id;
 END;
+//
 
--- Trigger to decrement subscriber_count after a subscription is removed
 CREATE TRIGGER after_subscription_delete
 AFTER DELETE ON subscriptions
 FOR EACH ROW
@@ -54,3 +56,6 @@ BEGIN
     SET subscriber_count = subscriber_count - 1 
     WHERE id = OLD.user_id;
 END;
+//
+
+DELIMITER ;

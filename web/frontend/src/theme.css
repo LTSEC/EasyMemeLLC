@@ -1,0 +1,30 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Common background color */
+    color: white; /* Common text color */
+}
+  
+  /* Shared Components */
+h1, h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+    color: white;
+}
+  
+button {
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+  
+a {
+    color: #61dafb; /* Shared link color */
+    text-decoration: none;
+}
+  
+a:hover {
+    text-decoration: underline;
+}
+  

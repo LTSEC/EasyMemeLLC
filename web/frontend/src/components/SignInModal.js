@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./SignInModal.css";
+import CONFIG from "../config";
 
-const SignInModal = ({ onClose }) => {
+const SignInModal = ({ onClose, onSignIn }) => {
   const [isCreatingAccount, setIsCreatingAccount] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
@@ -40,7 +41,7 @@ const SignInModal = ({ onClose }) => {
         };
 
     try {
-      const response = await fetch(`http://172.29.1.11:5000${endpoint}`, {
+      const response = await fetch(`${CONFIG.BACKEND_URL}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,12 +52,19 @@ const SignInModal = ({ onClose }) => {
       const result = await response.json();
       if (response.ok) {
         setMessage(result.message || "Success!");
-        if (!isCreatingAccount) onClose(); // Close modal after sign-in
+        if (isCreatingAccount) {
+          // Automatically sign in after account creation
+          onSignIn(result.user);
+        } else {
+          // Update global state after successful sign-in
+          onSignIn(result.user);
+          onClose(); // Close modal after sign-in
+        }
       } else {
         setMessage(result.error || "Something went wrong.");
       }
     } catch (error) {
-      console.error("Error:", error)
+      console.error("Error:", error);
       setMessage("An error occurred. Please try again.");
     }
   };
@@ -82,6 +90,7 @@ const SignInModal = ({ onClose }) => {
                   value={formData.username}
                   onChange={handleChange}
                   placeholder="Enter your username"
+                  required
                 />
               </div>
               <div className="form-group">
@@ -93,6 +102,7 @@ const SignInModal = ({ onClose }) => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
+                  required
                 />
               </div>
               <div className="form-group">
@@ -103,6 +113,7 @@ const SignInModal = ({ onClose }) => {
                   name="birthday"
                   value={formData.birthday}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -114,6 +125,7 @@ const SignInModal = ({ onClose }) => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
+                  required
                 />
               </div>
               <button type="submit" className="submit-button">
@@ -144,6 +156,7 @@ const SignInModal = ({ onClose }) => {
                   value={formData.identifier}
                   onChange={handleChange}
                   placeholder="Enter your username or email"
+                  required
                 />
               </div>
               <div className="form-group">
@@ -155,6 +168,7 @@ const SignInModal = ({ onClose }) => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
+                  required
                 />
               </div>
               <button type="submit" className="submit-button">

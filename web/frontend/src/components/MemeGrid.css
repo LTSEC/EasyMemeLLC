@@ -1,78 +1,113 @@
-/* Grid container */
+.meme-grid-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 100px); /* Ensures grid fits the viewport */
+  justify-content: space-between;
+}
+
 .meme-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    background-color: #121212;
-    color: white;
-  }
-  
-  /* Meme card */
-  .meme-card {
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
-  
-  .meme-card:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Meme thumbnail */
-  .meme-thumbnail {
-    width: 100%;
-    height: 140px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .meme-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  /* Meme info */
-  .meme-info {
-    padding: 10px;
-  }
-  
-  .meme-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .creator-pfp {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-  }
-  
-  .meme-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  .meme-meta {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #b3b3b3;
-  }
-  
-  .creator-username {
-    margin: 0;
-  }
-  
-  .meme-stats {
-    margin: 5px 0 0;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dynamic columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.meme-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.meme-card:hover {
+  transform: scale(1.03);
+}
+
+.meme-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  background: #f0f0f0; /* Fallback background */
+}
+
+.meme-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Proper scaling */
+}
+
+.meme-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meme-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.creator-pfp {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.meme-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.meme-meta {
+  margin-top: 5px;
+  font-size: 12px;
+  color: gray;
+}
+
+.meme-meta p {
+  margin: 0;
+}
+
+.pagination-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  background: #121212;
+}
+
+.page-number {
+  color: white;
+  font-size: 14px;
+}
+
+.back-page-button,
+.next-page-button {
+  padding: 8px 16px;
+  border: none;
+  background: #61dafb;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.back-page-button:hover,
+.next-page-button:hover {
+  background: #21a1f1;
+}
+
+.back-page-button:disabled,
+.next-page-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
