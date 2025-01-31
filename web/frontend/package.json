@@ -15,7 +15,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "concurrently \"PORT=80 npm run start:frontend\" \"npm run start:backend\"",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "react-scripts start",
     "start:backend": "cd ../ && python3 backend/app.py",
     "build": "react-scripts build",

